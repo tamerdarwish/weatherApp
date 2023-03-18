@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>My Weather</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
+    <link rel="stylesheet" href="../font-awesome/css/font-awesome.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
+<body>
+  <div id="container">
+    <div id="search-container">
+        <input placeholder="Search About City" />
+      
+        <button id="search-button"> <i class="fa fa-search" aria-hidden="true"></i> </button>
+    </div>
+
+    <div id="content-container"></div>
+  <div id="saved-content"></div>
+  <div id="unsaved-content"></div>
+
+    <script id="saved-results-template" type="text/x-handlebars-template">
+        {{#each result}}
+          <div class="saved-result">
+            <i class="fa fa-minus" aria-hidden="true"></i>
+            <h1>{{name}}</h1>
+            <h2>{{temperature}}</h2>
+              <h3>{{condition}}</h3>
+              <img src="{{conditionPic}}"/>
+              
+          </div>
+        {{/each}}
+    </script>
+
+    <script id="unsaved-results-template" type="text/x-handlebars-template">
+      {{#each result}}
+        <div class="unsaved-result">
+          <i class="fa fa-plus" aria-hidden="true"></i>
+          <h1>{{name}}</h1>
+          <h2>{{temperature}}</h2>
+            <h3>{{condition}}</h3>
+            <img src="{{conditionPic}}"/>
+            
+        </div>
+      {{/each}}
+  </script>
+
+  
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.4/handlebars.js"></script>
+    <script src="https://code.jquery.com/jquery-migrate-3.4.1.js" integrity="sha256-CfQXwuZDtzbBnpa5nhZmga8QAumxkrhOToWweU52T38=" crossorigin="anonymous"></script>    
+    <script src="Renderer.js"></script>
+    <script src="Model.js"></script>
+    <script src="main.js"></script>
+    
+</body>
+
+</html>
