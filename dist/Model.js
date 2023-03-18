@@ -6,43 +6,9 @@ class Model {
         this.unsavedCities = []
     }
 
-    getSavedCities() {
-        const self = this
-        return $.get(`savedCities`).then(result => {
-            this.savedCities = result
-            return this.savedCities
-        })
-
-    }
-
-   
-
-    getCityData(cityName) {
-
-        return $.get(`search/${cityName}`, (cityWeatherData) =>{
-            this.unsavedCities.push(cityWeatherData)
-            return this.unsavedCities
-        })
-    }
-
-    saveCity(cityName) {
-        let cityObject = this.getCityFromCitiesArray(cityName, this.unsavedCities)
-        return $.ajax({
-            url: "add",
-            method: "POST",
-            contentType: "application/json",
-            data:   JSON.stringify(cityObject),
-            success: function(result){
-                return this.deleteCityFromCitiesArray(cityName, this.unsavedCities)
-
-            }
-          });
-        
-    }
-
     deleteCity(cityName) {
 
-       return $.ajax({
+        return $.ajax({
             url: `delete/${cityName}`,
             type: 'DELETE',
             success: function (result) {
@@ -69,6 +35,43 @@ class Model {
             }
         }
     }
+
+
+    getSavedCities() {
+        const self = this
+        return $.get(`savedCities`).then(result => {
+            this.savedCities = result
+            return this.savedCities
+        })
+
+    }
+
+
+
+    getCityData(cityName) {
+
+        return $.get(`search/${cityName}`, (cityWeatherData) => {
+            this.unsavedCities.push(cityWeatherData)
+            return this.unsavedCities
+        })
+    }
+
+    saveCity(cityName) {
+        let cityObject = this.getCityFromCitiesArray(cityName, this.unsavedCities)
+        return $.ajax({
+            url: "add",
+            method: "POST",
+            contentType: "application/json",
+            data: JSON.stringify(cityObject),
+            success:  (result) => {
+                return this.deleteCityFromCitiesArray(cityName, this.unsavedCities)
+                
+
+            }
+        });
+
+    }
+
 
 }
 

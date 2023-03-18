@@ -32,6 +32,10 @@ body{
     border-radius: 10% 5%;
 }
 
+span {
+    content: "\2103";
+  }
+
 .add-button{
     background-color: blue;
 }

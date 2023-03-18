@@ -11,7 +11,7 @@ window.onload = async function(){
 $(document).on('click','.fa-plus', async function(){
     let cityName = $(this).closest(".unsaved-result").find("h1").text()
      await model.saveCity(cityName)
-     window.onload()
+     await window.onload()
     renderer.renderUnsavedCities(model.unsavedCities)
   });
 

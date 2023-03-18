@@ -2,11 +2,11 @@ class Renderer {
 
     renderSavedCities(citiesArray) {
         
-       $('#saved-content').empty()
+       $('#content-container').empty()
        const source = $('#saved-results-template').html();
        const template = Handlebars.compile(source);
        const newHTML = template({ result: citiesArray });
-       $('#saved-content').append(newHTML);
+       $('#content-container').append(newHTML);
     }
     
     renderUnsavedCities(citiesArray) {
@@ -14,7 +14,7 @@ class Renderer {
         const source = $('#unsaved-results-template').html();
         const template = Handlebars.compile(source);
         const newHTML = template({ result: citiesArray });
-        $('#unsaved-content').append(newHTML);
+        $('#content-container').append(newHTML);
     }
 
   
